@@ -1,4 +1,6 @@
 import { Text, StyleSheet } from 'react-native';
+import { useState } from "react";
+
 
 const Title = () => {
     return (
