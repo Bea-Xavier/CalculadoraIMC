@@ -1,23 +1,24 @@
+//Importação dos componentes necessários
 import { StyleSheet, View, Text } from "react-native";
 import Title from "./src/components/Title";
 import FormIMC from "./src/components/FormIMC";
-import Classification from "./src/components/Classification";
 
+//Renderização do componente App, que é o principal do aplicativo
 export default function App() {
   return (
     <View style={styles.container}>
      <Title />
      <FormIMC />
-     <Classification />
     </View>
   );
 }
 
+//Constante que guarda os estilos do componente App
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 16,
-    backgroundColor: '#fff',
+    padding: 14,
+    backgroundColor: '#FFFFE0',
   },
 });

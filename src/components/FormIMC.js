@@ -1,38 +1,56 @@
+//Importação de outros componentes necessários
 import { View, TextInput, Button, StyleSheet } from 'react-native';
+
 import Result from './Result';
+import Classification from './Classification';
+
 import { useState } from "react";
 
-
+//O componente FormIMC responável por receber os dados do usuário e calcular o IMC, em formato de função
 const FormIMC = () => {
+    //Variávies de funcionamento 
     const [peso, setPeso] = useState('');
     const [altura, setAltura] = useState('');
     const [imc, setImc] = useState(null);
-    const [classification, setClassification] = useState ('');
+    const [classification, setClassification] = useState(null);
+    const [pesoMin, setPesoMin] = useState(null);
+    const [pesoMax, setPesoMax] = useState(null);
 
+    //Lógica de cálculo do IMC, classificação e peso ideal
     const calcularIMC = () => {
+        //Inicializando as variáveis antes do laço de condição sem atribuir valores
+        let imcCalculado = null;
+        let quadradoAltura = null;
+
+        //Cálculo do IMC
         if (peso && altura) {
             const altutaMetros = parseFloat(altura) / 100;
-            const imcCalculado = (parseFloat(peso) / (altutaMetros * altutaMetros)).toFixed(2);
+            quadradoAltura = altutaMetros * altutaMetros;
+            imcCalculado = (parseFloat(peso) / (quadradoAltura)).toFixed(2);
             setImc(imcCalculado);
+        };
+
+        //Classificação de IMC
+        if (imcCalculado < 18.5) {
+            setClassification("Abaixo do Peso");
+        } else if (imcCalculado < 25) {
+            setClassification("Peso Normal");
+        } else if (imcCalculado < 30) {
+            setClassification("Sobrepeso");
+        } else if (imcCalculado < 35) {
+            setClassification("Obesidade Grau 1");
+        } else if (imcCalculado < 40) {
+            setClassification("Obesidade Grau 2");
+        } else {
+            setClassification("Obesidade Grau 3 (Obesidade Mórbida)");
         }
 
-        const Classification = ({ imc }) => {  
-            if ({imc} < 18.5) {
-                return <Text style={styles.classification}>Abaixo do peso</Text>;
-            } else if ({imc} >= 18.5 && imc <= 24.9) {
-                return <Text style={styles.classification}>Peso normal</Text>;
-            } else if ({imc} >= 30 && imc <= 34.9) {
-                return <Text style={styles.classification}>Obesidade Grau 1</Text>;
-            } else if ({imc} >= 35 && imc <= 39.9) {
-                return <Text style={styles.classification}>Obesidade Grau 2</Text>;
-            } else if ({imc} >= 40) {
-                return <Text style={styles.classification}>Obesidade Grau 3</Text>;
-            }
-            return null;  
-        };
+        //Cálculo do peso ideal, mínimo e máximo utilizando como base a altura do usuário
+        setPesoMin(18.5 * quadradoAltura);
+        setPesoMax(24.9 * quadradoAltura);
     };
 
-
+    //Renderização do componente FormIMC, com os campos para o usuário inserir o peso e altura
     return (
         <View style={styles.formContainer}>
             <TextInput
@@ -49,19 +67,17 @@ const FormIMC = () => {
                 value={altura}
                 onChangeText={setAltura}
             />
-            <Button title="Calcular IMC" onPress={calcularIMC} />
-            {imc && <Result imc={imc} />}
-
-        <Text Classification />
-
+            <View style={styles.button}><Button title="Calcular IMC" color = "#CD853F" borderRadius={16} onPress={calcularIMC} /></View>
+            {imc && classification && <Result imc={imc} classification={classification} pesoMin={pesoMin} pesoMax={pesoMax} />}
         </View>
     );
 
 };
 
+//Constante que guarda os estilos do componente
 const styles = StyleSheet.create({
     formContainer: {
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#FFFAFA',
         padding: 16,
         borderRadius: 10,
     },
@@ -73,6 +89,13 @@ const styles = StyleSheet.create({
         paddingHorizontal: 8,
         borderRadius: 5,
     },
+
+    button: {
+        overflow: 'hidden',
+        borderRadius: 15,
+        marginTop: 20,
+    }
+
 });
 
 export default FormIMC;
