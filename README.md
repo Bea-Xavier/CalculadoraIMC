@@ -4,17 +4,15 @@
 
 O projeto *Calculadora IMC* consiste em um programa desenvolvido em React Native, que utiliza informações inseridas pelo usuário como o peso e altura por exemplo, para:
 
-1. Calcular o IMC,
-2. Informar qual classificação se enquadra o IMC calculado (ex: Peso Normal, Sobrepeso, etc),
+1. Calcular o IMC;
+2. Informar qual classificação se enquadra o IMC calculado (ex: Peso Normal, Sobrepeso, etc);
 3. Indicar qual seria seu peso ideal entre o mínimo e o máximo baseado na altura inserida.
 
 ### Pré-requisitos
 
 Antes de baixar o arquivo do projeto e rodar o aplicativo, será necessário ter o *Node.js* instalado na sua máquina.
 
-```bash
 [NodeJS](https://nodejs.org/en) 
-```
 
 Depois disso é só copiar o link do repositório, criar uma pasta de sua escolha abri-lá no terminal com o git e digitar o seguinte comando: 
 
