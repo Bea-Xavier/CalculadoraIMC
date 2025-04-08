@@ -3,7 +3,7 @@ import { Text, StyleSheet } from 'react-native';
 //Função que retorna o título do aplicativo
 const Title = () => {
     return (
-        <Text style={styles.title}>Calculadora de IMC</Text>
+        <Text style={styles.title}>🌊 Calculadora de IMC ❄️</Text>
     )
 }
 
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 24,
-        color: '#8B4513'
+        color: '#4682B4'
     },
 });
 

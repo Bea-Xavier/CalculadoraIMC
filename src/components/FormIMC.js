@@ -32,17 +32,17 @@ const FormIMC = () => {
 
         //Classificação de IMC
         if (imcCalculado < 18.5) {
-            setClassification("Abaixo do Peso");
+            setClassification("Abaixo do Peso 👎");
         } else if (imcCalculado < 25) {
-            setClassification("Peso Normal");
+            setClassification("Peso Normal 👍");
         } else if (imcCalculado < 30) {
-            setClassification("Sobrepeso");
+            setClassification("Sobrepeso ❗️");
         } else if (imcCalculado < 35) {
-            setClassification("Obesidade Grau 1");
+            setClassification("Obesidade Grau 1 ⚠️");
         } else if (imcCalculado < 40) {
-            setClassification("Obesidade Grau 2");
+            setClassification("Obesidade Grau 2 😧");
         } else {
-            setClassification("Obesidade Grau 3 (Obesidade Mórbida)");
+            setClassification("Obesidade Grau 3 (Obesidade Mórbida) ☠️");
         }
 
         //Cálculo do peso ideal, mínimo e máximo utilizando como base a altura do usuário
@@ -67,7 +67,7 @@ const FormIMC = () => {
                 value={altura}
                 onChangeText={setAltura}
             />
-            <View style={styles.button}><Button title="Calcular IMC" color = "#CD853F" borderRadius={16} onPress={calcularIMC} /></View>
+            <View style={styles.button}><Button title="Calcular IMC" color = "#87CEEB" borderRadius={16} onPress={calcularIMC} /></View>
             {imc && classification && <Result imc={imc} classification={classification} pesoMin={pesoMin} pesoMax={pesoMax} />}
         </View>
     );
@@ -77,7 +77,7 @@ const FormIMC = () => {
 //Constante que guarda os estilos do componente
 const styles = StyleSheet.create({
     formContainer: {
-        backgroundColor: '#FFFAFA',
+        backgroundColor: '#E0FFFF',
         padding: 16,
         borderRadius: 10,
     },

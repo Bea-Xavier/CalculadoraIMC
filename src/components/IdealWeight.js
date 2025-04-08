@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
       marginTop: 24,
       fontWeight: 'bold',
       textAlign: 'center',
-      color: "#CD853F",
+      color: "#87CEFA",
     },
     // Subtítulos 
     sub: {

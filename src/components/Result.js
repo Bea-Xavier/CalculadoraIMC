@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
         fontSize: 24,
         textAlign: 'center',
-        color: '#A0522D',
+        color: '#00BFFF',
     },
 });
 
