@@ -22,6 +22,10 @@ const FormIMC = () => {
         let imcCalculado = null;
         let quadradoAltura = null;
 
+        const erroPeso = peso;
+        const erroAltura = altura;
+
+
         //Cálculo do IMC
         if (peso && altura) {
             const altutaMetros = parseFloat(altura) / 100;
@@ -29,6 +33,12 @@ const FormIMC = () => {
             imcCalculado = (parseFloat(peso) / (quadradoAltura)).toFixed(2);
             setImc(imcCalculado);
         };
+
+        if ((isNaN(erroPeso) || erroPeso == 0) || (isNaN(erroAltura) || erroAltura == 0)) {
+            alert('Valores inválidos, por favor tente novamente...');
+            setImc();
+            setClassification();
+        }
 
         //Classificação de IMC
         if (imcCalculado < 18.5) {
@@ -67,7 +77,7 @@ const FormIMC = () => {
                 value={altura}
                 onChangeText={setAltura}
             />
-            <View style={styles.button}><Button title="Calcular IMC" color = "#87CEEB" borderRadius={16} onPress={calcularIMC} /></View>
+            <View style={styles.button}><Button title="Calcular IMC" color="#87CEEB" borderRadius={16} onPress={calcularIMC} /></View>
             {imc && classification && <Result imc={imc} classification={classification} pesoMin={pesoMin} pesoMax={pesoMax} />}
         </View>
     );
